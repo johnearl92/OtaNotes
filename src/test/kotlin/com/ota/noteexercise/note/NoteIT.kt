@@ -11,8 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.http.MediaType
-import org.springframework.security.core.authority.SimpleGrantedAuthority
-import org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors
 import org.springframework.test.web.servlet.*
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -41,7 +39,6 @@ class NoteIT : BehaviorSpec() {
                 note = mockMvc.post("/api/v1/note") {
                     contentType = MediaType.APPLICATION_JSON
                     content = mapper.writeValueAsString(note)
-                    with(SecurityMockMvcRequestPostProcessors.csrf())
                 }.andExpect {
                     status { isCreated() }
                 }.andReturn().response.contentAsString.let {
@@ -57,7 +54,6 @@ class NoteIT : BehaviorSpec() {
             When("getting all notes") {
                 val allNotes = mockMvc.get("/api/v1/note") {
                     contentType = MediaType.APPLICATION_JSON
-                    with(SecurityMockMvcRequestPostProcessors.csrf())
                 }.andExpect {
                     status { isOk() }
                 }.andReturn().response.contentAsString.let {
@@ -73,7 +69,6 @@ class NoteIT : BehaviorSpec() {
                 and("the id is valid") {
                     val noteById = mockMvc.get("/api/v1/note/${note.id}") {
                         contentType = MediaType.APPLICATION_JSON
-                        with(SecurityMockMvcRequestPostProcessors.csrf())
                     }.andExpect {
                         status { isOk() }
                     }.andReturn().response.contentAsString.let {
@@ -86,9 +81,7 @@ class NoteIT : BehaviorSpec() {
                 }
 
                 and("the id is not valid") {
-                    val request = mockMvc.get("/api/v1/note/2") {
-                        with(SecurityMockMvcRequestPostProcessors.csrf())
-                    }
+                    val request = mockMvc.get("/api/v1/note/2")
 
                     Then("no note should be returned") {
                         request.andExpect { status { isNotFound() } }
@@ -102,7 +95,6 @@ class NoteIT : BehaviorSpec() {
                     val updatedNoteFromDb = mockMvc.put("/api/v1/note/${note.id}") {
                         contentType = MediaType.APPLICATION_JSON
                         content = mapper.writeValueAsString(updatedNote)
-                        with(SecurityMockMvcRequestPostProcessors.csrf())
                     }.andExpect {
                         status { isOk() }
                     }.andReturn().response.contentAsString.let {
@@ -117,7 +109,6 @@ class NoteIT : BehaviorSpec() {
                     val result = mockMvc.put("/api/v1/note/2") {
                         contentType = MediaType.APPLICATION_JSON
                         content = mapper.writeValueAsString(updatedNote)
-                        with(SecurityMockMvcRequestPostProcessors.csrf())
                     }
 
                     Then("no note should be updated") {
@@ -129,24 +120,16 @@ class NoteIT : BehaviorSpec() {
 
             When("deleting a note") {
                 and("the note id is valid") {
-                    mockMvc.delete("/api/v1/note/${note.id}") {
-                        with(SecurityMockMvcRequestPostProcessors.csrf())
-                    }.andExpect { status { isNoContent() } }
+                    mockMvc.delete("/api/v1/note/${note.id}")
+                        .andExpect { status { isNoContent() } }
                     Then("note should be deleted") {
-                        mockMvc.get("/api/v1/note/${note.id}") {
-                            with(SecurityMockMvcRequestPostProcessors.csrf())
-                            with(
-                                SecurityMockMvcRequestPostProcessors.user("tester")
-                                    .authorities(SimpleGrantedAuthority("SCOPE_ota.read"))
-                            )
-                        }.andExpect { status { isNotFound() } }
+                        mockMvc.get("/api/v1/note/${note.id}")
+                            .andExpect { status { isNotFound() } }
                     }
                 }
 
                 and("the note id is invalid") {
-                    val resultAction = mockMvc.delete("/api/v1/note/2") {
-                        with(SecurityMockMvcRequestPostProcessors.csrf())
-                    }
+                    val resultAction = mockMvc.delete("/api/v1/note/2")
                     Then("no note should be deleted") {
                         resultAction.andExpect { status { isNotFound() } }
                     }
