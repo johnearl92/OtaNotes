@@ -21,10 +21,11 @@ This is a technical exercise in OTA for the notes.
 - jacoco for the test coverage
 
 # How To
- The local deployment will make use of the dev profile which will use H2 as database while the docker 
- deployment will use the prod in which it will use the MySQL database. 
- I put the MySQL/docker as contingency for the exercise and to demonstrate multi-profile configuration.
- We will H2 for the demo.
+
+The local deployment will make use of the dev profile which will use H2 as database while the prod
+deployment will use the docker in which it will use the MySQL database.
+I put the MySQL/docker as a contingency and also to demonstrate multi-profile configuration.
+We will H2 for this demo.
 
 ## Run Application
 ```
