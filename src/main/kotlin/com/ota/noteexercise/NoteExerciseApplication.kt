@@ -1,11 +1,11 @@
-package com.byob.beyourownbarista
+package com.ota.noteexercise
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
 @SpringBootApplication
-class BeYourOwnBaristaApplication
+class NoteExerciseApplication
 
 fun main(args: Array<String>) {
-    runApplication<BeYourOwnBaristaApplication>(*args)
+    runApplication<NoteExerciseApplication>(*args)
 }

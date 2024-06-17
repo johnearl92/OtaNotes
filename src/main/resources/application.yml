@@ -1,5 +1,5 @@
 server:
-  port: 8081
+  port: 8080
 
 ---
 spring:
@@ -20,9 +20,9 @@ spring:
       on-profile: prod
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/byob
-    username: byobuser
-    password: byobpw
+    url: jdbc:mysql://localhost:3306/ota
+    username: otauser
+    password: otapw
   jpa:
     hibernate:
       ddl-auto: update
@@ -37,7 +37,7 @@ spring:
     hibernate:
       ddl-auto: create
   application:
-    name: BeYourOwnBarista
+    name: NoteExercise
   h2:
     console:
       enabled: true

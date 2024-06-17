@@ -1,5 +1,5 @@
-CREATE TABLE IF NOT EXISTS coffee (
+CREATE TABLE IF NOT EXISTS note (
                                       id BIGINT AUTO_INCREMENT PRIMARY KEY,
-                                      name VARCHAR(255) NOT NULL,
-                                      price DOUBLE NOT NULL
+                                      title VARCHAR(255) NOT NULL,
+                                      body VARCHAR(5000) NOT NULL
 );

@@ -1,4 +1,4 @@
-package com.byob.beyourownbarista.logging
+package com.ota.noteexercise.logging
 
 import org.slf4j.MDC
 import org.springframework.stereotype.Component

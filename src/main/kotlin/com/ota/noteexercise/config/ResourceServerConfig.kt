@@ -1,4 +1,4 @@
-package com.byob.beyourownbarista.config
+package com.ota.noteexercise.config
 
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
@@ -17,7 +17,7 @@ class ResourceServerConfig {
                 .authorizeHttpRequests { authorize ->
                     authorize
                             .anyRequest().permitAll()
-//                            .hasAuthority("SCOPE_byob.read")
+//                            .hasAuthority("SCOPE_ota.read")
                 }
                 .oauth2ResourceServer { oauth2 -> oauth2.jwt(Customizer.withDefaults()) }
         return http.build()

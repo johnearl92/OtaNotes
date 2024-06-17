@@ -15,7 +15,7 @@ plugins {
     jacoco
 }
 
-group = "com.byob"
+group = "com.ota"
 version = "0.0.1-SNAPSHOT"
 
 java {

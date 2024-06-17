@@ -1,13 +1,13 @@
 services:
   #  app:
-  #    image: earl/byob
+  #    image: earl/otanotes
   #    container_name: app
   #    depends_on:
   #      - db
   #    environment:
-  #      - SPRING_DATASOURCE_URL=jdbc:mysql://db:3306/byob
-  #      - SPRING_DATASOURCE_USERNAME=byobuser
-  #      - SPRING_DATASOURCE_PASSWORD=byobpw
+  #      - SPRING_DATASOURCE_URL=jdbc:mysql://db:3306/ota
+  #      - SPRING_DATASOURCE_USERNAME=otauser
+  #      - SPRING_DATASOURCE_PASSWORD=otapw
   #      - SPRING_PROFILES_ACTIVE=prod
   #    ports:
   #      - "8080:8080"
@@ -17,9 +17,9 @@ services:
   #    container_name: db
   #    environment:
   #      - MYSQL_ROOT_PASSWORD=root
-  #      - MYSQL_DATABASE=byob
-  #      - MYSQL_USER=byobuser
-  #      - MYSQL_PASSWORD=byobpw
+  #      - MYSQL_DATABASE=ota
+  #      - MYSQL_USER=otauser
+  #      - MYSQL_PASSWORD=otapw
   #    ports:
   #      - "3306:3306"
   elasticsearch:

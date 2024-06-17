@@ -1,4 +1,4 @@
-package com.byob.beyourownbarista.config
+package com.ota.noteexercise.config
 
 import io.github.bucket4j.Bucket
 import org.springframework.stereotype.Service

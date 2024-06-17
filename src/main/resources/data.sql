@@ -1,1 +1,1 @@
-INSERT INTO coffee (name, price) VALUES ('latte', 2.5);
+INSERT INTO note (title, body) VALUES ('sample', 'This is a sample body');

@@ -1,14 +1,11 @@
 # Overview
-
-This is a template POC for an API service implemented in kotlin.
-Refer to the Stack and concepts for the details on what was applied on this project.
-
-
+This is a technical exercise in OTA for the notes.
 
 # Pre-requisites
 - Java 17
 - kotlin
 - docker
+- gradlew
 
 # Stack and concepts applied
 - TDD
@@ -20,24 +17,28 @@ Refer to the Stack and concepts for the details on what was applied on this proj
 - Oauth2 Authorization
 - rate limiting mechanism
 - implement api versioning
-
-# TODO:
-- kubernetes
-- webauthn
-- use leveled api keys
-- allow list mechanism
+- configuration properties rather than @values
+- jacoco for the test coverage
 
 # How To
  The local deployment will make use of the dev profile which will use H2 as database while the docker 
- deployment will use the prod in which it will use the MySQL database
-## Run
+ deployment will use the prod in which it will use the MySQL database. 
+ I put the MySQL/docker as contingency for the exercise and to demonstrate multi-profile configuration.
+ We will H2 for the demo.
+
+## Run Application
 ```
 ./gradlew bootRun
 ```
 
+## Run unit test and coverage
+```
+./gradlew test
+```
+
 ## Build Docker Image
 ```agsl
-bootBuildImage --imageName=earl/byob
+./gradlew bootBuildImage --imageName=earl/otanotes
 ```
 
 # Swagger

@@ -1,4 +1,4 @@
-package com.byob.beyourownbarista
+package com.ota.noteexercise
 
 import io.kotest.core.config.AbstractProjectConfig
 import io.kotest.extensions.spring.SpringExtension
